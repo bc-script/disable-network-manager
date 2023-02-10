@@ -21,13 +21,13 @@ iptables -A SCANNER -m comment --comment "Drop/Blacklist Xmas/All scan" -j DROP 
 
 iptables -A SCANNER -j DROP
 
-iptables -A INPUT -p tcp --tcp-flags ALL FIN,URG,PSH -i -j SCANNER
-iptables -A INPUT -p tcp --tcp-flags ALL NONE -i -j SCANNER
-iptables -A INPUT -p tcp --tcp-flags ALL ALL -i -j SCANNER
-iptables -A INPUT -p tcp --tcp-flags ALL FIN,SYN -i -j SCANNER
-iptables -A INPUT -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -i -j SCANNER
-iptables -A INPUT -p tcp --tcp-flags SYN,RST SYN,RST -i -j SCANNER
-iptables -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -i -j SCANNER
+iptables -A INPUT -p tcp --tcp-flags ALL FIN,URG,PSH -j SCANNER
+iptables -A INPUT -p tcp --tcp-flags ALL NONE -j SCANNER
+iptables -A INPUT -p tcp --tcp-flags ALL ALL -j SCANNER
+iptables -A INPUT -p tcp --tcp-flags ALL FIN,SYN -j SCANNER
+iptables -A INPUT -p tcp --tcp-flags ALL SYN,RST,ACK,FIN,URG -j SCANNER
+iptables -A INPUT -p tcp --tcp-flags SYN,RST SYN,RST -j SCANNER
+iptables -A INPUT -p tcp --tcp-flags SYN,FIN SYN,FIN -j SCANNER
 
 
 iptables-save >> rules.v4
