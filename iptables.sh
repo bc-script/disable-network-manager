@@ -1,7 +1,13 @@
 #! /bin/sh
 
-iptables -A INPUT -p tcp --dport 80 -s 10.7.5.0/20 -j ACCEPT
-iptables -A INPUT -p tcp --dport 7283 -s 10.7.5.0/20 -j ACCEPT
+## apt install iptables
+# DNS 
+iptables -A INPUT -p tcp --dport 80 -s 10.7.5.0/24 -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -s 10.7.7.0/24 -j ACCEPT
+
+# SSH
+iptables -A INPUT -p tcp --dport 7283 -s 10.7.5.0/24 -j ACCEPT
+iptables -A INPUT -p tcp --dport 7283 -s 200.239.87.0/24 -j ACCEPT
 
 iptables -A INPUT -p tcp --dport 80 -j DROP
 iptables -A INPUT -p tcp --dport 7283 -j DROP
